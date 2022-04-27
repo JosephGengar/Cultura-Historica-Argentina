@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron" style="background-color: transparent">
+    <h2 style="color: white; font-size: xx-large; font-style: italic">♠ Cultura Intranet ♠</h2><br /><br />
+         <div style="background-color: black; padding: 10px 10px 10px 10px">
+             <p class="lead" style="color:white">La cultura historica argentina esta a unos cuantos pasos de nuestro pueblo, conoce, visita, aprende ...</p> <br />
+             <p style="color:white"> Conocé las actividades y propuestas de los Museos e Institutos nacionales, espacios fundamentales de nuestra cultura en tanto generadores de encuentros, saberes y experiencias tanto para sus trabajadores como para sus visitantes.</p>
+         </div>
+</div>
+
+<div class="row" style="background-color: transparent;">
+    <div class="col-md-12" style="background-color: beige">
+        <h2>Institutos</h2>
+        <p>
+            Lorem Ipsum 1 es simplemente el texto de relleno de las imprentas y archivos de texto.
+            Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,
+            cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
+            galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+        </p>
+        <button id="button1" class="btn btn-default" style="margin-bottom: 8px">Ver Institutos &raquo;</button>
+        <div id="lista1"></div>
+    </div><br /><br />
+    <div class="col-md-12" style="background-color: beige">
+        <h2>Tramites</h2>
+        <p>
+            Lorem Ipsum 2 es simplemente el texto de relleno de las imprentas y archivos de texto.
+            Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,
+            cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
+            galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+        </p>
+        <button id="button2" class="btn btn-default" style="margin-bottom: 8px">Ver tipos de tramite &raquo;</button>
+        <div id="lista2"></div>
+    </div> <br /><br />
+    <div class="col-lg-12" style="background-color: beige">
+        <h2>Museos</h2>
+        <p>
+            Lorem Ipsum 3 es simplemente el texto de relleno de las imprentas y archivos de texto.
+            Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,
+            cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una
+            galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
+        </p>
+        <button id="button3" class="btn btn-default" style="margin-bottom: 8px">Ver Museos &raquo;</button>
+        <div id="lista3"></div>
+    </div>
+    
+</div>
+
+@section scripts{
+    <script>
+        $("#button1").click(function () {
+            $.ajax({
+                type: "GET",
+                url: 'https://www.cultura.gob.ar/api/v2.0/institutos/',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.results);
+                    var lista1 = $("#lista1");
+                    $.each(data.results, function (i, item) {
+                        lista1.append(
+                            '<div>' +
+                            '♠ ' + item.nombre + '<br>' +
+                            '</div>'
+                        );
+                    })
+                },
+            });
+        });
+        $("#button2").click(function () {
+            $.ajax({
+                type: "GET",
+                url: 'https://www.cultura.gob.ar/api/v2.0/tramites/',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.results);
+                    var lista2 = $("#lista2");
+                    $.each(data.results, function (i, item2) {
+                        lista2.append(
+                            '<div>' +
+                             '♠ ' + item2.titulo + '<br>' +
+                            '</div>'
+                        );
+                    })
+                },
+            });
+        });
+        $("#button3").click(function () {
+            $.ajax({
+                type: "GET",
+                url: 'https://www.cultura.gob.ar/api/v2.0/museos/',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data.results);
+                    var lista3 = $("#lista3");
+                    $.each(data.results, function (i, item3) {
+                        lista3.append(
+                            '<div>' +
+                            '♠ ' + item3.nombre + '<br>' +
+                            '</div>'
+                        );
+                    })
+                },
+            });
+        });
+    </script>
+    }
