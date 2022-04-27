@@ -20,7 +20,10 @@
             galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
         </p>
         <button id="button1" class="btn btn-default" style="margin-bottom: 8px">Ver Institutos &raquo;</button>
-        <div id="lista1"></div>
+        <div id="agregar1">
+            <div id="lista1" class="class1"></div>
+            <div id="btnVolver" style="padding-bottom: 10px"></div>
+        </div>
     </div><br /><br />
     <div class="col-md-12" style="background-color: beige">
         <h2>Tramites</h2>
@@ -57,7 +60,7 @@
                 dataType: "json",
                 success: function (data) {
                     console.log(data.results);
-                    var lista1 = $("#lista1");
+                    var lista1 = $(".class1");
                     $.each(data.results, function (i, item) {
                         lista1.append(
                             '<div>' +
@@ -67,6 +70,7 @@
                     })
                 },
             });
+            $("#btnVolver").html('<button id="btn1" class="btn btn-default">Volver</button>');
         });
         $("#button2").click(function () {
             $.ajax({
@@ -106,5 +110,11 @@
                 },
             });
         });
+        $("#btnVolver").click(function () {
+            $("#lista1").remove();
+            $("#agregar1").html('<divid="lista1" class="class1"></div>')
+            console.log("funciona?");
+        });
+
     </script>
     }
