@@ -11,7 +11,8 @@ Principal:
 
 Utilizando los Botones Correspondientes Visualizamos mediante Ajax, los datos correspondientes:
 
-![cult2](https://user-images.githubusercontent.com/102115164/165445547-7afc09c5-2055-44a0-84e1-ae97cf82064d.png)
+![cult3](https://user-images.githubusercontent.com/102115164/165562027-8d31fc62-7e25-41c0-943d-8fddc81b6368.png)
 
+Ante la apertura de la lista con los datos, se puede visualizar un boton (Volver)que mediante Jquery, oculta la lista.
 
 Tecnologias utilizadas: Asp.Net, Jquery, Ajax, Bpotstrap, entre otros...
